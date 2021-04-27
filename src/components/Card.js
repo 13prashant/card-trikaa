@@ -3,21 +3,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faMapMarkedAlt, faMailBulk } from '@fortawesome/free-solid-svg-icons'
+import blankProfile from '../assets/blank-profile.png'
 
 import './card.css'
 
 library.add(fab, faMapMarkedAlt, faMailBulk)
+const Card = ({ user, recievedImage }) => {
 
-const Card = ({ user }) => {
     const { firstName, lastName, mobileNumber, whatsappNumber, companyName, designation, role, instagramHandle, facebookHandle, twitterHandle, linkedinHandle, website, email, address } = user
-
     return (
         <div className='card-wrapper'>
             <div className='card'>
-                <img
-                    src="https://scontent.fstv1-1.fna.fbcdn.net/v/t1.6435-9/32337093_2132215526997824_458626331672838144_n.jpg?_nc_cat=110&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=fBlsQdDvb9QAX_ZkXcQ&_nc_ht=scontent.fstv1-1.fna&oh=571d1bc21652952bcfc5ea692cd5f401&oe=60AA55FA"
-                    alt="profile"
-                />
+                {
+                    recievedImage ?
+                        <img
+                            src={window.URL.createObjectURL(recievedImage)}
+                            alt="profile"
+                        />
+                        : <img src={blankProfile} alt="blank" />
+                }
                 <div className='title'>
                     <h1>{firstName} <br />{lastName}</h1>
                     {

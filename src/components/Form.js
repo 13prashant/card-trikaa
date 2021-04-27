@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './form.css'
 
-const Form = ({ createUser }) => {
+const Form = ({ createUser, uploadedImage }) => {
 
     const [user, setUser] = useState({
         firstName: '',
@@ -21,12 +21,30 @@ const Form = ({ createUser }) => {
         address: ''
     })
 
+    const [image, setImage] = useState(null)
+    const [error, setError] = useState(null)
+
+    const types = ['image/jpeg', 'image/jpg']
+
+    const handleOnChange = (e) => {
+        let selected = e.target.files[0]
+        if (selected && types.includes(selected.type)) {
+            setImage(selected)
+            setError(null)
+        } else {
+            setImage(null)
+            setError('Please select a valid JPEG file type!')
+        }
+    }
+
     const history = useHistory()
-    const handleOnClick = (e) => {
-        e.preventDefault()
+    const handleOnClick = () => {
+        // e.preventDefault()
         createUser(user)
+        uploadedImage(image)
         history.push('/')
     }
+
 
     return (
         <div className='form'>
@@ -56,7 +74,15 @@ const Form = ({ createUser }) => {
                     placeholder='If diffrent from main Mobile Number...'
                 /><br />
                 <label htmlFor="image">Upload your image</label>
-                <input type='file' /><br />
+                <input
+                    onChange={handleOnChange}
+                    type='file'
+                />
+                <div className="output-img">
+                    {error && <div className="error">{error}</div>}
+                    {image && <div>{image.name}</div>}
+                </div>
+                <br />
                 <label htmlFor="companyName">Company Name</label>
                 <input
                     onChange={(e) => setUser({ ...user, companyName: e.target.value })}

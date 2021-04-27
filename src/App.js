@@ -15,21 +15,32 @@ import Header from './components/Header'
 function App() {
 
   const [user, setUser] = useState({})
+  const [image, setImage] = useState(null)
 
   const handleCreateUser = (data) => {
     setUser(data)
   }
-  console.log(user)
+
+  const handleUploadedImage = (data) => {
+    setImage(data)
+  }
+
   return (
     <Router>
       <div className="App">
         <Header />
         <Switch>
           <Route path="/form">
-            <Form createUser={handleCreateUser} />
+            <Form
+              createUser={handleCreateUser}
+              uploadedImage={handleUploadedImage}
+            />
           </Route>
           <Route path="/">
-            <Card user={user} />
+            <Card
+              user={user}
+              recievedImage={image}
+            />
           </Route>
         </Switch>
       </div>
