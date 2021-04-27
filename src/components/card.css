@@ -5,17 +5,6 @@
   width: 100%;
 }
 
-.your-card {
-  color: var(--bgColor);
-  display: flex;
-  justify-content: center;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  background: var(--mainTextColor);
-  border: 1px solid var(--bgColor);
-  border-radius: 10px;
-}
-
 .card {
   color: var(--mainTextColor);
   background-color: var(--bgColor);
@@ -51,7 +40,7 @@
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--bgColor);
 }
 
 .btn {
@@ -62,6 +51,25 @@ a {
   margin: 20px 0;
   background: var(--accentColor);
   border-radius: 10px;
+  color: var(--mainTextColor);
+}
+
+.btn a {
+  color: var(--mainTextColor);
+  margin-right: 10px;
+}
+
+.btn span {
+  margin-right: 10px;
+}
+
+hr {
+  width: 100%;
+  color: var(--secondaryTextColor);
+}
+
+.role {
+  color: var(--secondaryTextColor);
 }
 
 .social li {
@@ -81,4 +89,22 @@ ul {
   list-style-type: none;
   display: flex;
   justify-content: space-around;
+}
+
+.address {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.website,
+.mail,
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.address a {
+  cursor: pointer;
+  margin-left: 10px;
 }

@@ -1,0 +1,16 @@
+.your-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.your-card a:last-child {
+  color: var(--bgColor);
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  background: var(--mainTextColor);
+  border: 1px solid var(--bgColor);
+  border-radius: 10px;
+}

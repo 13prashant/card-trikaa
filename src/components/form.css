@@ -1,0 +1,35 @@
+.form {
+  color: var(--mainTextColor);
+  background: var(--accentColor);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+input {
+  padding: 5px;
+  border: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.personal-details {
+  display: grid;
+  justify-content: center;
+}
+
+.social-handles {
+  margin-top: 20px;
+  display: grid;
+  justify-content: center;
+}
