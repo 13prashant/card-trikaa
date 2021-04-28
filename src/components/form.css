@@ -1,35 +1,23 @@
 .form {
-  color: var(--mainTextColor);
-  background: var(--accentColor);
-  padding: 20px;
-  border-radius: 15px;
 }
 
 label {
-  margin-bottom: 0;
+  font-size: 13px;
+  color: #8e8e8e;
 }
 
-input {
-  padding: 5px;
-  border: none;
+input,
+textarea {
+  opacity: 0.9;
+  width: 100%;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-input[type="number"] {
-  -moz-appearance: textfield;
+textarea {
+  height: 50px;
+  outline: none;
 }
 
-.personal-details {
-  display: grid;
-  justify-content: center;
-}
-
-.social-handles {
-  margin-top: 20px;
-  display: grid;
-  justify-content: center;
+.form__submit {
+  width: 100%;
+  margin-bottom: 50px;
 }

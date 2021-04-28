@@ -10,10 +10,23 @@ import './card.css'
 library.add(fab, faMapMarkedAlt, faMailBulk)
 const Card = ({ user, recievedImage }) => {
 
-    const { firstName, lastName, mobileNumber, whatsappNumber, companyName, designation, role, instagramHandle, facebookHandle, twitterHandle, linkedinHandle, website, email, address } = user
+    const { firstName,
+        lastName,
+        mobileNumber,
+        whatsappNumber,
+        companyName,
+        designation,
+        role,
+        instagramHandle,
+        facebookHandle,
+        twitterHandle,
+        linkedinHandle,
+        website,
+        email,
+        address } = user
     return (
-        <div className='card-wrapper'>
-            <div className='card'>
+        <div className='smart'> {/* card className is already used in index.css */}
+            <div className='smart__header'>
                 {
                     recievedImage ?
                         <img
@@ -22,7 +35,7 @@ const Card = ({ user, recievedImage }) => {
                         />
                         : <img src={blankProfile} alt="blank" />
                 }
-                <div className='title'>
+                <div className='smart__title'>
                     <h1>{firstName} <br />{lastName}</h1>
                     {
                         companyName ? <p>{designation} <br />at {companyName}</p> : ' '
@@ -32,7 +45,7 @@ const Card = ({ user, recievedImage }) => {
             <div className='btn'>
                 <a
                     href="tel:8000432174"
-                >{mobileNumber}</a> <span>|</span>
+                >{mobileNumber}</a><span>|</span>
                 <FontAwesomeIcon
                     icon={["fab", "whatsapp"]}
                     size="lg"
@@ -41,8 +54,8 @@ const Card = ({ user, recievedImage }) => {
                 />
             </div>
             <hr />
-            <p className='role'>{role}</p>
-            <ul className="social">
+            <p className='smart__role'>{role}</p>
+            <ul className="smart__social">
                 {
                     instagramHandle ?
                         <li>
@@ -85,10 +98,11 @@ const Card = ({ user, recievedImage }) => {
                         : ' '
                 }
             </ul>
-            <div className="address">
+            <div className="smart__address">
+
                 {
                     website ?
-                        <div className="website">
+                        <div className="smart__website">
                             <FontAwesomeIcon
                                 icon={["fab", "chrome"]}
                             />
@@ -98,7 +112,7 @@ const Card = ({ user, recievedImage }) => {
                 }
                 {
                     email ?
-                        <div className="mail">
+                        <div className="smart__mail">
                             <FontAwesomeIcon icon="mail-bulk" />
                             <a href={`mailto:${email}`} >{email}</a>
                         </div>
@@ -106,7 +120,7 @@ const Card = ({ user, recievedImage }) => {
                 }
                 {
                     address ?
-                        <div className="location">
+                        <div className="smart__location">
                             <FontAwesomeIcon icon="map-marked-alt" />
                             <a
                                 href={`https://www.google.com/maps/place/${address}`}

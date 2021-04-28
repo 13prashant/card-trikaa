@@ -42,13 +42,13 @@ const Form = ({ createUser, uploadedImage }) => {
         // e.preventDefault()
         createUser(user)
         uploadedImage(image)
-        history.push('/')
+        history.push('/card')
     }
 
 
     return (
-        <div className='form'>
-            <div className='personal-details'>
+        <div className='userform'> {/* form className is already in use in index.css */}
+            <div className='personal-details card--bg'>
                 <label htmlFor="firstName">First Name</label>
                 <input
                     onChange={(e) => setUser({ ...user, firstName: e.target.value })}
@@ -82,7 +82,9 @@ const Form = ({ createUser, uploadedImage }) => {
                     {error && <div className="error">{error}</div>}
                     {image && <div>{image.name}</div>}
                 </div>
-                <br />
+            </div>
+
+            <div className="company-details card--bg">
                 <label htmlFor="companyName">Company Name</label>
                 <input
                     onChange={(e) => setUser({ ...user, companyName: e.target.value })}
@@ -101,9 +103,10 @@ const Form = ({ createUser, uploadedImage }) => {
                     onChange={(e) => setUser({ ...user, role: e.target.value })}
                     type="text"
                     placeholder='eg. Developing web apps for high tech companies with a focus of delivering a superior brand experience'
-                /><br />
+                />
             </div>
-            <div className='social-handles'>
+
+            <div className='social-handles card--bg'>
                 <label htmlFor="instagram">www.instagram.com/</label>
                 <input
                     onChange={(e) => setUser({ ...user, instagramHandle: e.target.value })}
@@ -127,7 +130,11 @@ const Form = ({ createUser, uploadedImage }) => {
                     onChange={(e) => setUser({ ...user, linkedinHandle: e.target.value })}
                     type="text"
                     placeholder='eg. pacific1392'
-                /><br />
+                />
+            </div>
+
+            <div className="card--bg">
+
                 <label htmlFor="website">Website</label>
                 <input
                     onChange={(e) => setUser({ ...user, website: e.target.value })}
@@ -146,12 +153,13 @@ const Form = ({ createUser, uploadedImage }) => {
                     type="text"
                     placeholder='Offic Address'
                 /><br />
-                <input
-                    onClick={handleOnClick}
-                    type="submit"
-                    value='Submit'
-                /><br />
             </div>
+
+            <button
+                onClick={handleOnClick}
+                className='form__submit btn'
+                type="submit"
+            > Submit </button>
         </div>
     )
 }

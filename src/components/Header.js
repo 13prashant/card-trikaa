@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
-        <div className='your-card'>
-            <Link to="/">Logo</Link>
-            <Link
-                to="/form"
-            >Get your card</Link>
+        <div className='header'>
+            <div className="header__logo">
+                <span>Logo</span>
+            </div>
+            <Link to="/form">
+                <p className='header__get-card'>Get your card</p>
+            </Link>
         </div>
     )
 }

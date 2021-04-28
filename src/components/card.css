@@ -1,110 +1,87 @@
-.card-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 100%;
+.smart {
 }
 
-.card {
-  color: var(--mainTextColor);
-  background-color: var(--bgColor);
+.smart__header {
+  background: #000000;
+  /* border: 1px solid var(--borderColor); */
   border-radius: 15px;
-  margin: 0 auto;
   display: flex;
-  align-items: center;
+  overflow: hidden;
 }
 
-.card img {
-  border-radius: 15px 0 0 15px;
-  width: 42%;
-  height: 100%;
+.smart__header img {
+  width: 40%;
+  height: 170px;
   object-fit: cover;
 }
 
-.title {
-  margin: 0 auto;
+.smart__title {
+  margin: auto;
+  color: var(--bgColor);
 }
 
-.title h1 {
+.smart__title h1 {
+  margin-top: 10px;
   font-size: 25px;
   font-weight: 600;
   line-height: 1.1;
 }
 
-.title p {
+.smart__title p {
   margin-top: -10px;
   font-size: 12px;
-  color: var(--secondaryTextColor);
+  font-weight: 500;
+  color: #8e8e8e;
   line-height: 1.3;
 }
 
-a {
-  text-decoration: none;
-  color: var(--bgColor);
-}
-
 .btn {
+  padding: 5px;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
-  width: 100%;
-  padding: 10px 0;
-  margin: 20px 0;
-  background: var(--accentColor);
-  border-radius: 10px;
-  color: var(--mainTextColor);
+  align-items: center;
 }
 
 .btn a {
-  color: var(--mainTextColor);
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .btn span {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 hr {
-  width: 100%;
-  color: var(--secondaryTextColor);
+  margin: 25px 0 10px;
 }
 
-.role {
-  color: var(--secondaryTextColor);
+.smart__role {
+  color: #8e8e8e;
 }
 
-.social li {
-  display: grid;
-  place-items: center;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  background: #dddddd;
-  padding: 5px;
-  border-radius: 50%;
-}
-
-ul {
-  width: 100%;
+.smart__social {
+  margin: 30px 0;
   padding: 0;
-  list-style-type: none;
   display: flex;
   justify-content: space-around;
 }
 
-.address {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.website,
-.mail,
-.location {
-  display: flex;
-  align-items: center;
-}
-
-.address a {
+.smart__social li {
+  display: grid;
+  place-items: center;
+  background: var(--bgColor);
+  width: 35px;
+  height: 35px;
   cursor: pointer;
-  margin-left: 10px;
+  padding: 5px;
+  border: 1px solid var(--borderColor);
+  border-radius: 50%;
+}
+
+.smart__address {
+}
+
+.smart__address a {
+  margin-left: 15px;
+  font-weight: 400;
 }

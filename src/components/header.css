@@ -1,16 +1,15 @@
-.your-card {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-.your-card a:last-child {
-  color: var(--bgColor);
-  display: flex;
-  justify-content: center;
-  padding: 10px 20px;
-  background: var(--mainTextColor);
-  border: 1px solid var(--bgColor);
+.header__get-card {
+  margin: 0;
+  padding: 5px 10px;
+  background: transparent;
+  border: 1px solid #000000;
   border-radius: 10px;
+  cursor: pointer;
 }

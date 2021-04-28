@@ -10,6 +10,8 @@ import {
 import Card from './components/Card'
 import Form from "./components/Form";
 import Header from './components/Header'
+import Login from './components/Login';
+import Register from './components/Register';
 
 
 function App() {
@@ -30,18 +32,22 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
+          <Route exact path='/'>
+            <Login />
+          </Route>
+          <Route path='/register'>
+            <Register />
+          </Route>
           <Route path="/form">
             <Form
               createUser={handleCreateUser}
               uploadedImage={handleUploadedImage}
             />
           </Route>
-          <Route path="/">
-            <Card
-              user={user}
-              recievedImage={image}
-            />
-          </Route>
+          <Card
+            user={user}
+            recievedImage={image}
+          />
         </Switch>
       </div>
     </Router>
