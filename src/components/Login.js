@@ -21,13 +21,12 @@ const Login = ({ loadUser }) => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 if (data.id) {
                     loadUser(data)
-                    history.push(`/${data.username}`)
+                    history.push('/card')
                 } else alert('wrong credentials!')
             })
-            .catch(error => console.log(error))
+            .catch(error => console.log('error logging in!'))
     }
 
     return (

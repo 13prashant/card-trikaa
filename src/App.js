@@ -1,11 +1,9 @@
 import { useState } from 'react'
-
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
-
 
 import Card from './components/Card'
 import Form from "./components/Form";
@@ -13,6 +11,7 @@ import Header from './components/Header'
 import Login from './components/Login';
 import Register from './components/Register';
 import Welcome from './components/Welcome';
+import User from './components/User';
 
 function App() {
 
@@ -60,11 +59,11 @@ function App() {
     })
   }
 
-  const [image, setImage] = useState(null)
+  // const [image, setImage] = useState(null)
 
-  const handleUploadedImage = (data) => {
-    setImage(data)
-  }
+  // const handleUploadedImage = (data) => {
+  //   setImage(data)
+  // }
 
   return (
     <Router>
@@ -89,14 +88,17 @@ function App() {
             <Form
               loadUser={loadUser}
               createdUser={user}
-              uploadedImage={handleUploadedImage}
+            // uploadedImage={handleUploadedImage}
+            />
+          </Route>
+          <Route path='/card' >
+            <Header loadUser={user} />
+            <Card
+              loadedUser={user}
             />
           </Route>
           <Route path='/:user' >
-            <Header loadUser={user} />
-            <Card
-              loadUser={loadUser}
-              loadedUser={user}
+            <User
             />
           </Route>
         </Switch>

@@ -1,25 +1,44 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 15px;
 }
 
-.header__get-card {
-  margin: 0;
-  padding: 5px 10px;
-  background: transparent;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  cursor: pointer;
+.header__upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo {
+  text-shadow: 1px 1px var(--accentColor);
 }
 
 .header__logout {
-  font-size: 10px;
+  font-size: 14px;
+}
+
+.header__bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__edit-card {
   margin: 0;
-  padding: 3px 6px;
-  background: transparent;
+  padding: 5px 10px;
+  /* background: transparent;
   border: 1px solid #000000;
-  border-radius: 10px;
+  border-radius: 10px; */
   cursor: pointer;
+}
+
+.header__share {
+  color: var(--bgColor);
+  padding: 3px 6px;
+  background: var(--accentColor);
+  border: 1px solid var(--borderColor);
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+.card--bg {
+  margin-top: 0;
 }

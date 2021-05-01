@@ -1,13 +1,35 @@
+import { useState, useEffect } from 'react'
+import { useHistory, useParams } from 'react-router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faMapMarkedAlt, faMailBulk } from '@fortawesome/free-solid-svg-icons'
 import blankProfile from '../assets/blank-profile.png'
-import './card.css'
+import './user.css'
 
 library.add(fab, faMapMarkedAlt, faMailBulk)
 
-const Card = ({ loadedUser }) => {
+const User = () => {
+
+
+    const [getUser, setGetUser] = useState({
+        username: '',
+        firstName: '',
+        lastName: '',
+        // image: null,
+        mobileNumber: '',
+        whatsappNumber: '',
+        companyName: '',
+        designation: '',
+        role: '',
+        instagramHandle: '',
+        facebookHandle: '',
+        twitterHandle: '',
+        linkedinHandle: '',
+        website: '',
+        email: '',
+        address: ''
+    })
 
     const {
         firstName,
@@ -23,7 +45,44 @@ const Card = ({ loadedUser }) => {
         linkedinHandle,
         website,
         email,
-        address } = loadedUser
+        address } = getUser
+
+    let { user } = useParams()
+    const history = useHistory()
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/${user}`, {
+            method: 'get',
+            headers: { 'Content-Type': 'aaplication/json' },
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.id) {
+                    setGetUser({
+                        username: data.username,
+                        firstName: data.firstname,
+                        lastName: data.lastname,
+                        // image: null,
+                        mobileNumber: data.mobilenumber,
+                        whatsappNumber: data.whatsappnumber,
+                        companyName: data.companyname,
+                        designation: data.designation,
+                        role: data.role,
+                        instagramHandle: data.instagramhandle,
+                        facebookHandle: data.facebookhandle,
+                        twitterHandle: data.twitterhandle,
+                        linkedinHandle: data.linkedinhandle,
+                        website: data.website,
+                        email: data.email,
+                        address: data.address
+                    })
+                } else {
+                    alert('no such user found!')
+                    history.push('/register')
+                }
+            })
+            .catch(error => console.log('error getting the user!'))
+    }, [history, user])
 
     return (
         <div className='smart'> {/* card className is already used in index.css */}
@@ -136,4 +195,4 @@ const Card = ({ loadedUser }) => {
     )
 }
 
-export default Card
+export default User

@@ -31,8 +31,11 @@ const Register = ({ loadUser }) => {
                 if (data.id) {
                     loadUser(data)
                     history.push(`/${username}`)
+                } else {
+                    alert('cannot register this user!')
                 }
             })
+            .catch(error => console.log('error registering user!'))
     }
     return (
         <div className='register'>
@@ -73,8 +76,8 @@ const Register = ({ loadUser }) => {
                         className='register__submit btn'
                     > Register </button>
                     <p className='register__terms'>
-                        By registering, you agree to our&nbsp;
-                        <a href="#">Terms</a>.
+                        By registering, you agree to our terms.&nbsp;
+                        {/* <a href="#">Terms</a>. */}
                     </p>
                 </div>
             </div>
