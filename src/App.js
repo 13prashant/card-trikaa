@@ -12,16 +12,55 @@ import Form from "./components/Form";
 import Header from './components/Header'
 import Login from './components/Login';
 import Register from './components/Register';
-
+import Welcome from './components/Welcome';
 
 function App() {
 
-  const [user, setUser] = useState({})
-  const [image, setImage] = useState(null)
+  const [user, setUser] = useState({
+    id: '',
+    username: '',
+    firstName: '',
+    lastName: '',
+    // image: null,
+    mobileNumber: '',
+    whatsappNumber: '',
+    companyName: '',
+    designation: '',
+    role: '',
+    instagramHandle: '',
+    facebookHandle: '',
+    twitterHandle: '',
+    linkedinHandle: '',
+    website: '',
+    email: '',
+    address: '',
+    joined: ''
+  })
 
-  const handleCreateUser = (data) => {
-    setUser(data)
+  const loadUser = (data) => {
+    setUser({
+      id: data.id,
+      username: data.username,
+      firstName: data.firstname,
+      lastName: data.lastname,
+      image: data.image,
+      mobileNumber: data.mobilenumber,
+      whatsappNumber: data.mobilenumber,
+      companyName: data.companyname,
+      designation: data.designation,
+      role: data.role,
+      instagramHandle: data.instagramnhandle,
+      facebookHandle: data.facebookhandle,
+      twitterHandle: data.twitterhandle,
+      linkedinHandle: data.linkedinhandle,
+      website: data.website,
+      email: data.email,
+      address: data.address,
+      joined: data.joined
+    })
   }
+
+  const [image, setImage] = useState(null)
 
   const handleUploadedImage = (data) => {
     setImage(data)
@@ -30,24 +69,36 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
+
         <Switch>
           <Route exact path='/'>
-            <Login />
+            <Welcome />
           </Route>
           <Route path='/register'>
-            <Register />
+            <Register
+              loadUser={loadUser}
+            />
           </Route>
-          <Route path="/form">
+          <Route path='/login'>
+            <Login
+              loadUser={loadUser}
+            />
+          </Route>
+          <Route exact path={`/${user.id}`}>
+            <Header loadUser={user} />
             <Form
-              createUser={handleCreateUser}
+              loadUser={loadUser}
+              createdUser={user}
               uploadedImage={handleUploadedImage}
             />
           </Route>
-          <Card
-            user={user}
-            recievedImage={image}
-          />
+          <Route path='/:user' >
+            <Header loadUser={user} />
+            <Card
+              loadUser={loadUser}
+              loadedUser={user}
+            />
+          </Route>
         </Switch>
       </div>
     </Router>

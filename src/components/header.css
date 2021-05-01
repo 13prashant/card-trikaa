@@ -13,3 +13,13 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
+.header__logout {
+  font-size: 10px;
+  margin: 0;
+  padding: 3px 6px;
+  background: transparent;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
+}

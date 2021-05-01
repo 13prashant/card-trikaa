@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
@@ -6,11 +7,15 @@ import { faMapMarkedAlt, faMailBulk } from '@fortawesome/free-solid-svg-icons'
 import blankProfile from '../assets/blank-profile.png'
 
 import './card.css'
+import { useParams } from 'react-router'
 
 library.add(fab, faMapMarkedAlt, faMailBulk)
-const Card = ({ user, recievedImage }) => {
 
-    const { firstName,
+const Card = ({ loadedUser, loadUser }) => {
+
+    const {
+        username,
+        firstName,
         lastName,
         mobileNumber,
         whatsappNumber,
@@ -23,17 +28,37 @@ const Card = ({ user, recievedImage }) => {
         linkedinHandle,
         website,
         email,
-        address } = user
+        address } = loadedUser
+
+
+    let { user } = useParams();
+
+    useEffect(() => {
+
+        fetch(`http://localhost:5000/${user}`, {
+            method: 'get',
+            headers: { 'Content-Type': 'aaplication/json' },
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data.id) {
+                    loadUser(data)
+                }
+            })
+    }, [])
+
     return (
         <div className='smart'> {/* card className is already used in index.css */}
             <div className='smart__header'>
                 {
-                    recievedImage ?
-                        <img
-                            src={window.URL.createObjectURL(recievedImage)}
-                            alt="profile"
-                        />
-                        : <img src={blankProfile} alt="blank" />
+                    <img src={blankProfile} alt="blank" />
+                    // recievedImage ?
+                    //     <img
+                    //         src={window.URL.createObjectURL(recievedImage)}
+                    //         alt="profile"
+                    //     />
+                    //     : <img src={blankProfile} alt="blank" />
                 }
                 <div className='smart__title'>
                     <h1>{firstName} <br />{lastName}</h1>

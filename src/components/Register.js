@@ -1,39 +1,76 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import './register.css'
 
-const Register = () => {
+const Register = ({ loadUser }) => {
+
+    const [mobileNumber, setMobileNumber] = useState('')
+    // const [email, setEmail] = useState('')
+    const [firstName, setfirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
+    const history = useHistory()
+
+    const handleRegister = () => {
+        fetch('http://localhost:5000/register', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                mobileNumber,
+                // email,
+                firstName,
+                lastName,
+                username,
+                password
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.id) {
+                    loadUser(data)
+                    history.push(`/${username}`)
+                }
+            })
+    }
     return (
         <div className='register'>
             <div className="register__container container">
                 <div className="register__logo">
-                    <h1>Logo</h1>
+                    <h1>card-trikaa</h1>
                 </div>
                 <div className="register__heading">
                     <h4>Register to make & share your smart card with friends.</h4>
                 </div>
                 <div className="register__form form">
                     <input
-                        value=''
+                        onChange={(e) => setMobileNumber(e.target.value)}
                         type="text"
-                        placeholder='Mobile Number or Email'
+                        placeholder='Mobile Number'
                     />
                     <input
-                        value=''
+                        onChange={(e) => setfirstName(e.target.value)}
                         type="text"
                         placeholder='First Name'
                     />
                     <input
-                        value=''
+                        onChange={(e) => setLastName(e.target.value)}
                         type="text"
                         placeholder='Last Name'
                     />
                     <input
-                        value=''
+                        onChange={(e) => setUsername(e.target.value)}
+                        type="text"
+                        placeholder='Username'
+                    />
+                    <input
+                        onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         placeholder='Password' />
                     <button
+                        onClick={handleRegister}
                         className='register__submit btn'
-                        type="submit"
                     > Register </button>
                     <p className='register__terms'>
                         By registering, you agree to our&nbsp;
@@ -43,7 +80,7 @@ const Register = () => {
             </div>
             <div className="register__register card">
                 <span>Have an account?</span>
-                <Link to='/'>
+                <Link to='/login'>
                     <span className='register__line2'>&nbsp;Login</span>
                 </Link>
             </div>

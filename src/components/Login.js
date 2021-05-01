@@ -1,34 +1,63 @@
-import React from 'react'
+import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './login.css'
 
-const Login = () => {
+const Login = ({ loadUser }) => {
+
+    const [mobileNumber, setMobileNumber] = useState('')
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     const history = useHistory()
 
     const handleLogIn = () => {
-        history.push('/card')
+        fetch('http://localhost:5000/login', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                mobileNumber, username, email, password
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data.id) {
+                    loadUser(data)
+                    history.push(`/${data.username}`)
+                } else alert('wrong credentials!')
+            })
+            .catch(error => console.log(error))
     }
+
     return (
         <div className='login'>
             <div className="login__container container">
                 <div className="login__logo">
-                    <h1>Logo</h1>
+                    <h1>card-trikaa</h1>
                 </div>
                 <div className="login__form form">
                     <input
-                        value=''
+                        onChange={(e) => {
+                            if (isNaN(e.target.value)) {
+                                if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(e.target.value)) {
+                                    setEmail(e.target.value)
+                                } else { setUsername(e.target.value) }
+                            } else {
+                                setMobileNumber(e.target.value.replace(/ /g, ""))
+                            }
+                        }}
                         type="text"
                         placeholder='Phone number, username or email'
                     />
                     <input
-                        value=''
+                        onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         placeholder='Password'
                     />
                     <button
                         onClick={handleLogIn}
                         className='login__submit btn'
-                        type="submit"
                     > Log In </button>
                 </div>
             </div>

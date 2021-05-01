@@ -1,0 +1,8 @@
+.welcome__logo {
+  margin: 0 12px;
+  text-shadow: 2px 2px var(--accentColor);
+}
+
+.welcome__line2 {
+  color: var(--accentColor);
+}
