@@ -1,12 +1,8 @@
-import './header.css'
 import { Link } from 'react-router-dom'
+import { WhatsappShareButton, WhatsappIcon } from 'react-share'
+import './header.css'
 
 const Header = ({ loadUser }) => {
-
-    // const handleShare = () => {
-    //     const userUrl = `http://localhost:3000/${loadUser.username}`
-
-    // }
 
     return (
         <div className='header'>
@@ -24,10 +20,12 @@ const Header = ({ loadUser }) => {
                         Edit your card
                     </p>
                 </Link>
-                <button
-                    // onClick={handleShare}
-                    className='header__share'
-                >Share</button>
+                <WhatsappShareButton url={`https://card-trikaa.herokuapp.com/${loadUser.username}`}>
+                    <button
+                        className='header__share'
+                    >Share</button>
+                </WhatsappShareButton>
+
             </div>
         </div >
     )

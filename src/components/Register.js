@@ -30,7 +30,7 @@ const Register = ({ loadUser }) => {
             .then(data => {
                 if (data.id) {
                     loadUser(data)
-                    history.push(`/${username}`)
+                    history.push(`/user/${username}`)
                 } else {
                     alert('cannot register this user!')
                 }
