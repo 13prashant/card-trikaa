@@ -84,22 +84,24 @@ function App() {
             />
           </Route>
           <Route exact path={`/${user.id}`}>
-            <Header loadUser={user} />
+            {/* {
+              user.id &&
+              <Header loadUser={user} />
+            } */}
             <Form
               loadUser={loadUser}
               createdUser={user}
             // uploadedImage={handleUploadedImage}
             />
           </Route>
-          <Route path='/card' >
+          <Route path='/user/:user' >
             <Header loadUser={user} />
             <Card
               loadedUser={user}
             />
           </Route>
           <Route path='/:user' >
-            <User
-            />
+            <User />
           </Route>
         </Switch>
       </div>

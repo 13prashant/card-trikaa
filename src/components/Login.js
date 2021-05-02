@@ -12,7 +12,7 @@ const Login = ({ loadUser }) => {
     const history = useHistory()
 
     const handleLogIn = () => {
-        fetch('http://localhost:5000/login', {
+        fetch('https://sheltered-plateau-48126.herokuapp.com/login', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -23,7 +23,7 @@ const Login = ({ loadUser }) => {
             .then(data => {
                 if (data.id) {
                     loadUser(data)
-                    history.push('/card')
+                    history.push(`/user/${data.username}`)
                 } else alert('wrong credentials!')
             })
             .catch(error => console.log('error logging in!'))

@@ -6,11 +6,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faMapMarkedAlt, faMailBulk } from '@fortawesome/free-solid-svg-icons'
 import blankProfile from '../assets/blank-profile.png'
 import './user.css'
+import { Link } from 'react-router-dom'
 
 library.add(fab, faMapMarkedAlt, faMailBulk)
 
 const User = () => {
-
 
     const [getUser, setGetUser] = useState({
         username: '',
@@ -31,27 +31,11 @@ const User = () => {
         address: ''
     })
 
-    const {
-        firstName,
-        lastName,
-        mobileNumber,
-        whatsappNumber,
-        companyName,
-        designation,
-        role,
-        instagramHandle,
-        facebookHandle,
-        twitterHandle,
-        linkedinHandle,
-        website,
-        email,
-        address } = getUser
-
     let { user } = useParams()
     const history = useHistory()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/${user}`, {
+        fetch(`https://sheltered-plateau-48126.herokuapp.com/${user}`, {
             method: 'get',
             headers: { 'Content-Type': 'aaplication/json' },
         })
@@ -82,10 +66,34 @@ const User = () => {
                 }
             })
             .catch(error => console.log('error getting the user!'))
-    }, [history, user])
+    }, [])
+
+    const {
+        firstName,
+        lastName,
+        mobileNumber,
+        whatsappNumber,
+        companyName,
+        designation,
+        role,
+        instagramHandle,
+        facebookHandle,
+        twitterHandle,
+        linkedinHandle,
+        website,
+        email,
+        address } = getUser
 
     return (
         <div className='smart'> {/* card className is already used in index.css */}
+            <div className='smart__upper'>
+                <div className="smart__logo">
+                    <span>card-trikaa</span>
+                </div>
+                <Link to={`/register`}>
+                    <p className='smart__get-card'>Get your Card</p>
+                </Link>
+            </div>
             <div className='smart__header'>
                 {
                     <img src={blankProfile} alt="blank" />

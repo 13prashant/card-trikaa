@@ -29,7 +29,7 @@ const Header = ({ loadUser }) => {
                     className='header__share'
                 >Share</button>
             </div>
-        </div>
+        </div >
     )
 }
 

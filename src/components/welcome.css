@@ -1,3 +1,7 @@
+.welcome__container {
+  display: flex;
+  justify-content: center;
+}
 .welcome__logo {
   margin: 0 12px;
   text-shadow: 2px 2px var(--accentColor);
@@ -5,4 +9,14 @@
 
 .welcome__line2 {
   color: var(--accentColor);
+}
+
+.welcome__image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.card--bg img {
+  width: 248px;
 }

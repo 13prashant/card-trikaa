@@ -14,7 +14,7 @@ const Register = ({ loadUser }) => {
     const history = useHistory()
 
     const handleRegister = () => {
-        fetch('http://localhost:5000/register', {
+        fetch('https://sheltered-plateau-48126.herokuapp.com/register', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

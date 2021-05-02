@@ -42,7 +42,7 @@ const Form = ({ createdUser, loadUser }) => {
 
     const history = useHistory()
     const handleOnSubmit = () => {
-        fetch(`http://localhost:5000/${createdUser.id}`, {
+        fetch(`https://sheltered-plateau-48126.herokuapp.com/${createdUser.id}`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -68,7 +68,9 @@ const Form = ({ createdUser, loadUser }) => {
             .then(data => {
                 if (data) {
                     loadUser(data)
-                    history.push('/card')
+                    history.push(`/user/${data.username}`)
+                } else {
+                    alert('error updating user!')
                 }
             })
 
@@ -210,7 +212,7 @@ const Form = ({ createdUser, loadUser }) => {
                 className='form__submit btn'
                 type="submit"
             > Submit </button>
-            <Link to={'/card'}>
+            <Link to={`/user/${createdUser.username}`}>
                 <p className='header__get-card'>Cancel</p>
             </Link>
         </div>

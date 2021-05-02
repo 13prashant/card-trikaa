@@ -1,6 +1,24 @@
 .smart {
 }
 
+.smart__upper {
+  /* margin-bottom: 15px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.smart__logo {
+  text-shadow: 1px 1px var(--accentColor);
+}
+
+.smart__get-card {
+  padding: 5px 10px;
+  border: 1px solid var(--borderColor);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
 .smart__header {
   background: #000000;
   /* border: 1px solid var(--borderColor); */
