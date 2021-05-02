@@ -25,7 +25,6 @@ const Header = ({ loadUser }) => {
                         className='header__share'
                     >Share</button>
                 </WhatsappShareButton>
-
             </div>
         </div >
     )
