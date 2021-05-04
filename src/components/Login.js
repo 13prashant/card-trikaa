@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './login.css'
 
-const Login = ({ loadUser }) => {
+const Login = ({ loadUser, isLoggedIn }) => {
 
     const [mobileNumber, setMobileNumber] = useState('')
     const [username, setUsername] = useState('')
@@ -23,7 +23,8 @@ const Login = ({ loadUser }) => {
             .then(data => {
                 if (data.id) {
                     loadUser(data)
-                    history.push(`/user/${data.username}`)
+                    isLoggedIn(true)
+                    history.push(`/${data.username}`)
                 } else alert('wrong credentials!')
             })
             .catch(error => console.log('error logging in!'))

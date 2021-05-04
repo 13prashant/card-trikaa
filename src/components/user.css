@@ -103,3 +103,10 @@ hr {
   margin-left: 15px;
   font-weight: 400;
 }
+
+.notice {
+  background-color: rgba(0, 0, 0, 0.075);
+  border: 1px solid var(--accentColor);
+  margin-top: 25px;
+  padding: 0 0 0 15px;
+}

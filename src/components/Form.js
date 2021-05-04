@@ -68,7 +68,7 @@ const Form = ({ createdUser, loadUser }) => {
             .then(data => {
                 if (data) {
                     loadUser(data)
-                    history.push(`/user/${data.username}`)
+                    history.push(`/${data.username}`)
                 } else {
                     alert('error updating user!')
                 }
@@ -212,7 +212,7 @@ const Form = ({ createdUser, loadUser }) => {
                 className='form__submit btn'
                 type="submit"
             > Submit </button>
-            <Link to={`/user/${createdUser.username}`}>
+            <Link to={`/${createdUser.username}`}>
                 <p className='header__get-card'>Cancel</p>
             </Link>
         </div>

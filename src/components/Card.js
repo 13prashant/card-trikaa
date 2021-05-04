@@ -1,13 +1,15 @@
+import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faMapMarkedAlt, faMailBulk } from '@fortawesome/free-solid-svg-icons'
 import blankProfile from '../assets/blank-profile.png'
+import { useHistory, useParams } from 'react-router'
 import './card.css'
 
 library.add(fab, faMapMarkedAlt, faMailBulk)
 
-const Card = ({ loadedUser }) => {
+const Card = ({ loadedUser, loadUser }) => {
 
     const {
         firstName,
@@ -25,7 +27,28 @@ const Card = ({ loadedUser }) => {
         email,
         address } = loadedUser
 
+    let { user } = useParams()
+    const history = useHistory()
+
+    useEffect(() => {
+        fetch(`https://sheltered-plateau-48126.herokuapp.com/${user}`, {
+            method: 'get',
+            headers: { 'Content-Type': 'aaplication/json' },
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.id) {
+                    loadUser(data)
+                } else {
+                    alert('no such user found!')
+                    history.push('/register')
+                }
+            })
+            .catch(error => console.log('error getting the user!'))
+    }, [])
+
     return (
+
         <div className='smart'> {/* card className is already used in index.css */}
             <div className='smart__header'>
                 {
@@ -101,7 +124,6 @@ const Card = ({ loadedUser }) => {
                 }
             </ul>
             <div className="smart__address">
-
                 {
                     website ?
                         <div className="smart__website">

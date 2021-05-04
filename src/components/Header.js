@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
-import { WhatsappShareButton, WhatsappIcon } from 'react-share'
+import { WhatsappShareButton } from 'react-share'
 import './header.css'
 
-const Header = ({ loadUser }) => {
-
+const Header = ({ loadedUser }) => {
     return (
         <div className='header'>
             <div className='header__upper'>
@@ -15,12 +14,12 @@ const Header = ({ loadUser }) => {
                 </Link>
             </div>
             <div className="header__bottom card--bg">
-                <Link to={`/${loadUser.id}`}>
+                <Link to={`/${loadedUser.id}`}>
                     <p className='header__edit-card'>
                         Edit your card
                     </p>
                 </Link>
-                <WhatsappShareButton url={`https://card-trikaa.herokuapp.com/${loadUser.username}`}>
+                <WhatsappShareButton url={`https://card-trikaa.herokuapp.com/${loadedUser.username}`}>
                     <button
                         className='header__share'
                     >Share</button>

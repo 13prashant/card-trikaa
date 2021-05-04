@@ -11,9 +11,14 @@ import Header from './components/Header'
 import Login from './components/Login';
 import Register from './components/Register';
 import Welcome from './components/Welcome';
-import User from './components/User';
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  const handleIsLoggedIn = (data) => {
+    setIsLoggedIn(data)
+  }
 
   const [user, setUser] = useState({
     id: '',
@@ -48,7 +53,7 @@ function App() {
       companyName: data.companyname,
       designation: data.designation,
       role: data.role,
-      instagramHandle: data.instagramnhandle,
+      instagramHandle: data.instagramhandle,
       facebookHandle: data.facebookhandle,
       twitterHandle: data.twitterhandle,
       linkedinHandle: data.linkedinhandle,
@@ -68,7 +73,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-
         <Switch>
           <Route exact path='/'>
             <Welcome />
@@ -81,27 +85,23 @@ function App() {
           <Route path='/login'>
             <Login
               loadUser={loadUser}
+              isLoggedIn={handleIsLoggedIn}
             />
           </Route>
           <Route exact path={`/${user.id}`}>
-            {/* {
-              user.id &&
-              <Header loadUser={user} />
-            } */}
+            {isLoggedIn && <Header loadedUser={user} />}
             <Form
               loadUser={loadUser}
               createdUser={user}
             // uploadedImage={handleUploadedImage}
             />
           </Route>
-          <Route path='/user/:user' >
-            <Header loadUser={user} />
+          <Route path={`/:user`} >
+            {isLoggedIn && <Header loadedUser={user} />}
             <Card
+              loadUser={loadUser}
               loadedUser={user}
             />
-          </Route>
-          <Route path='/:user' >
-            <User />
           </Route>
         </Switch>
       </div>
