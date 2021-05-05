@@ -28,6 +28,7 @@ const Register = ({ loadUser }) => {
         })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 if (data.id) {
                     loadUser(data)
                     history.push(`/user/${data.username}`)

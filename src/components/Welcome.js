@@ -10,8 +10,11 @@ const Welcome = () => {
                 <div className="welcome__logo">
                     <h1>card-trikaa</h1>
                 </div>
+                <div className="welcome__heading">
+                    <h4>Never run out of your business cards.</h4>
+                </div>
             </div>
-            <div className="welcome__image card--bg">
+            <div className="welcome__image">
                 <img src={welcomePicture} alt="" />
             </div>
             <div className="welcome__register card">

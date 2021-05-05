@@ -89,7 +89,9 @@ function App() {
             />
           </Route>
           <Route exact path={`/${user.id}`}>
-            {isLoggedIn && <Header loadedUser={user} />}
+            <Header
+              loadedUser={user}
+            />
             <Form
               loadUser={loadUser}
               createdUser={user}
@@ -97,11 +99,16 @@ function App() {
             />
           </Route>
           <Route path={`/:user`} >
-            {isLoggedIn && <Header loadedUser={user} />}
-            <Card
-              loadUser={loadUser}
-              loadedUser={user}
-            />
+            <div>
+              <Header
+                loadedUser={user}
+                isLoggedIn={isLoggedIn}
+              />
+              <Card
+                loadUser={loadUser}
+                loadedUser={user}
+              />
+            </div>
           </Route>
         </Switch>
       </div>
