@@ -1,3 +1,6 @@
+.welcome {
+  background: var(--bgColor);
+}
 .welcome__container {
   display: flex;
   flex-direction: column;
@@ -28,5 +31,6 @@
 }
 
 .welcome__image img {
-  width: 248px;
+  width: 50%;
+  height: auto;
 }
