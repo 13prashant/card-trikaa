@@ -12,7 +12,6 @@ import SkeletonCard from '../skeletons/SkeletonCard'
 library.add(fab, faMapMarkedAlt, faMailBulk)
 
 const Card = ({ loadedUser, loadUser }) => {
-
     const {
         firstName,
         lastName,
@@ -33,7 +32,7 @@ const Card = ({ loadedUser, loadUser }) => {
     const history = useHistory()
 
     useEffect(() => {
-        fetch(`https://sheltered-plateau-48126.herokuapp.com/${user}`, {
+        fetch(`http://sheltered-plateau-48126.herokuapp.com/${user}`, { /**/
             method: 'get',
             headers: { 'Content-Type': 'aaplication/json' },
         })

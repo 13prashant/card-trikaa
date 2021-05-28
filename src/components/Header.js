@@ -21,7 +21,7 @@ const Header = ({ loadedUser, isLoggedIn }) => {
                         <div className="header__logo">
                             <span>card-trikaa</span>
                         </div>
-                        <Link to={`/login`}>
+                        <Link to='/login'>
                             <p className='header__logout'>Logout</p>
                         </Link>
                     </div>

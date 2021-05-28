@@ -80,6 +80,7 @@ function App() {
           <Route path='/register'>
             <Register
               loadUser={loadUser}
+              isLoggedIn={handleIsLoggedIn}
             />
           </Route>
           <Route path='/login'>

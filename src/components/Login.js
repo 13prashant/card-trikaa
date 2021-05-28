@@ -12,7 +12,7 @@ const Login = ({ loadUser, isLoggedIn }) => {
     const history = useHistory()
 
     const handleLogIn = () => {
-        fetch('https://sheltered-plateau-48126.herokuapp.com/login', {
+        fetch('http://sheltered-plateau-48126.herokuapp.com/login', { /**/
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

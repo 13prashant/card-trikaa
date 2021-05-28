@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './register.css'
 
-const Register = ({ loadUser }) => {
+const Register = ({ loadUser, isLoggedIn }) => {
 
     const [mobileNumber, setMobileNumber] = useState('')
     // const [email, setEmail] = useState('')
@@ -14,7 +14,7 @@ const Register = ({ loadUser }) => {
     const history = useHistory()
 
     const handleRegister = () => {
-        fetch('https://sheltered-plateau-48126.herokuapp.com/register', {
+        fetch('http://sheltered-plateau-48126.herokuapp.com/register', {    /* */
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -29,11 +29,14 @@ const Register = ({ loadUser }) => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                if (data.id) {
+                if (data === 'This mobile number is already registered!') {
+                    alert('This mobile number is already registered!')
+                } else if (data === 'This username is not available!') {
+                    alert('This username is not available!')
+                } else if (data.id) {
                     loadUser(data)
-                    history.push(`/user/${data.username}`)
-                } else {
-                    alert('cannot register this user!')
+                    history.push(`/${data.username}`)
+                    isLoggedIn(true)
                 }
             })
             .catch(error => console.log('error registering user!'))

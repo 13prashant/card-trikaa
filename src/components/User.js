@@ -35,7 +35,7 @@ const User = () => {
     const history = useHistory()
 
     useEffect(() => {
-        fetch(`https://sheltered-plateau-48126.herokuapp.com/${user}`, {
+        fetch(`http://localhost:5000/${user}`, { /*sheltered-plateau-48126.herokuapp.com*/
             method: 'get',
             headers: { 'Content-Type': 'aaplication/json' },
         })
