@@ -42,7 +42,7 @@ const Form = ({ createdUser, loadUser }) => {
 
     const history = useHistory()
     const handleOnSubmit = () => {
-        fetch(`http://sheltered-plateau-48126.herokuapp.com/${createdUser.id}`, {  /* */
+        fetch(`https://sheltered-plateau-48126.herokuapp.com/${createdUser.id}`, {  /* */
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

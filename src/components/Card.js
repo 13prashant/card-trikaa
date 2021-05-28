@@ -32,7 +32,7 @@ const Card = ({ loadedUser, loadUser }) => {
     const history = useHistory()
 
     useEffect(() => {
-        fetch(`http://sheltered-plateau-48126.herokuapp.com/${user}`, { /**/
+        fetch(`https://sheltered-plateau-48126.herokuapp.com/${user}`, { /**/
             method: 'get',
             headers: { 'Content-Type': 'aaplication/json' },
         })
