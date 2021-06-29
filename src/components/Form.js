@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './form.css'
+import config from '../config';
 
 const Form = ({ createdUser, loadUser }) => {
 
@@ -42,7 +43,7 @@ const Form = ({ createdUser, loadUser }) => {
 
     const history = useHistory()
     const handleOnSubmit = () => {
-        fetch(`https://sheltered-plateau-48126.herokuapp.com/${createdUser.id}`, {  /* */
+        fetch(`${config.card_tricka_api_url}/${createdUser.id}`, {  /* */
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
