@@ -8,6 +8,7 @@ import { useHistory, useParams } from 'react-router'
 import './card.css'
 import { Link } from 'react-router-dom'
 import SkeletonCard from '../skeletons/SkeletonCard'
+import config from '../config';
 
 library.add(fab, faMapMarkedAlt, faMailBulk)
 
@@ -32,7 +33,7 @@ const Card = ({ loadedUser, loadUser }) => {
     const history = useHistory()
 
     useEffect(() => {
-        fetch(`https://sheltered-plateau-48126.herokuapp.com/${user}`, { /**/
+        fetch(`${config.card_tricka_api_url}/${user}`, { /**/
             method: 'get',
             headers: { 'Content-Type': 'aaplication/json' },
         })

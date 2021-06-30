@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './register.css'
+import config from '../config';
 
 const Register = ({ loadUser, isLoggedIn }) => {
 
@@ -14,7 +15,7 @@ const Register = ({ loadUser, isLoggedIn }) => {
     const history = useHistory()
 
     const handleRegister = () => {
-        fetch('https://sheltered-plateau-48126.herokuapp.com/register', {    /* */
+        fetch(`${config.card_tricka_api_url}/register`, {    /* */
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -33,7 +34,12 @@ const Register = ({ loadUser, isLoggedIn }) => {
                     alert('This mobile number is already registered!')
                 } else if (data === 'This username is not available!') {
                     alert('This username is not available!')
-                } else if (data.id) {
+                } else if (data === 'success'){
+                    loadUser(data)
+                    history.push(`/${username}`)
+                    isLoggedIn(true)
+                } 
+                else if (data.id) {
                     loadUser(data)
                     history.push(`/${data.username}`)
                     isLoggedIn(true)

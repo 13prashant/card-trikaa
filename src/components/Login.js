@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './login.css'
+import config from '../config';
 
 const Login = ({ loadUser, isLoggedIn }) => {
 
@@ -12,7 +13,7 @@ const Login = ({ loadUser, isLoggedIn }) => {
     const history = useHistory()
 
     const handleLogIn = () => {
-        fetch('https://sheltered-plateau-48126.herokuapp.com/login', { /**/
+        fetch(`${config.card_tricka_api_url}/login`, { /**/
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
